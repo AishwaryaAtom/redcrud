@@ -10,7 +10,10 @@ const Cart = ({ initialData }) => {
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart.cart);
 
-
+  useEffect(() => {
+      dispatch(initializeCart(initialData));
+      
+  }, [dispatch, initialData]);
 
   const totalQuantity = cart.reduce((acc, item) => acc + item.quantity, 0);
   const totalAmount = cart.reduce(
